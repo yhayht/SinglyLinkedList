@@ -48,7 +48,6 @@ public class SinglyLinkedList {
 		while (current != null && current.data < data) {
 			previous = current;
 			current = current.getNext();
-			//System.out.println("Output: " + previous.data + " - " + position);
 			position++;
 		}
 
@@ -62,12 +61,10 @@ public class SinglyLinkedList {
 			} else if (current == null) {
 				tail.next = new Node(data);
 				tail = tail.next;
-				//System.out.println("Added to tail - " + tail.data);
 			} else {
 				temp = new Node(data);
 				temp.next = previous.next;
 				previous.setNext(temp);
-				//System.out.println("Prev - " + temp.data + " Next - " + temp.next);
 			}
 		}
 	}
