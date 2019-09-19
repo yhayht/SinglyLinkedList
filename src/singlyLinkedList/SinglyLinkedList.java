@@ -26,13 +26,6 @@ public class SinglyLinkedList {
 			this.next = next;
 		}
 
-		public Node getNext() {
-			return next;
-		}
-
-		public void setNext(Node n) {
-			next = n;
-		}
 	}
 
 	Node head, tail;
@@ -42,12 +35,12 @@ public class SinglyLinkedList {
 	}
 
 	public void insert(int data) {
-		Node current = head, previous = head, temp;
+		Node current = head, previous = head;
 		int position = 0;
 
 		while (current != null && current.data < data) {
 			previous = current;
-			current = current.getNext();
+			current = current.next;
 			position++;
 		}
 
@@ -57,14 +50,14 @@ public class SinglyLinkedList {
 			tail = head;
 		else if (position > 0) {
 			if (head == current) {
-				head = current.getNext();
+				head = current.next;
 			} else if (current == null) {
 				tail.next = new Node(data);
 				tail = tail.next;
 			} else {
-				temp = new Node(data);
-				temp.next = previous.next;
-				previous.setNext(temp);
+				current = new Node(data);
+				current.next = previous.next;
+				previous.next = current;
 			}
 		}
 	}
@@ -104,6 +97,9 @@ public class SinglyLinkedList {
 	public static void main(String[] args) {
 		SinglyLinkedList list = new SinglyLinkedList();
 
+		System.out.println("Execution begun");
+		System.out.println("initial list: " + list);
+		
 		// testing
 		list.insert(3);
 		list.insert(5);
